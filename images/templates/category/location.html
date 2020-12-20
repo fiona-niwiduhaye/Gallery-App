@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="row">
+    {% if location %}
+    <h3 class="w3-padding">{{ location|length}} Images in {{message}}
+
+    </h3>
+    {% else %}
+    <h2>Sorry, We don't have any images in {{message}} </h2>
+    {% endif %}
+
+</div>
+<!--end of row-->
+<div class="row">
+    {% if location %}
+
+     <div class="w3-row-padding w3-margin">
+{% for pic in location %}
+    <div class="w3-col m3">
+    <img src="{{pic.image.url}}" style="width:100%;cursor:pointer; max-height:300px"
+         data-toggle="modal" data-target="#myModal{{pic.id}}">
+
+</div>
+        {% endfor%}
+
+    </div>
+
+
+    {% endif %}
+</div>
+
+{% endblock %}

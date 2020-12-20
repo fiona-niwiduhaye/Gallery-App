@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container" id="home">
+    <div class="w3-display-middle">
+        <h2  class='text-center' style="font-family: 'Anton', sans-serif;">IWACU GALLERY</h2>
+        <form class="w3-center" role="search" action="{%url 'search_category' %}">
+            <div class="w3-bar">
+                <input type="text" class="w3-bar-item w3-input w3-border form-control" placeholder="Search Images"
+                       name="Category">
+
+
+                <button class="btn w3-bar-item w3-hide-small w3-white" type="submit">
+                    <i class="fa fa-search "></i>
+
+                </button>
+
+
+            </div>
+            <h2 id="category" style="font-family: 'Ma Shan Zheng', cursive;">Discover the Land of Thousand Hills </h2>
+        </form>
+    </div>
+</div>
+
+<!-- !PAGE CONTENT! -->
+
+<!-- Photo Grid -->
+<div class="w3-row-padding w3-margin">
+
+{% for pic in pics %}
+
+<div class="w3-col m3 s1">
+    <img src="{{pic.image.url}}" style="width:100%;cursor:pointer; max-height:280px"
+         data-toggle="modal" data-target="#myModal{{pic.id}}">
+
+</div>
+{% endfor%}
+
+{% for pic in pics %}
+<!-- Modal -->
+<div id="myModal{{pic.id}}" class="modal fade" role="dialog" style="color:#112A19">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content w3-black">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body" style="font-family: 'Anton', sans-serif;">
+
+                <img src="{{pic.image.url}}" style="width:100%; max-height:500px">
+
+                <h4  >Name: {{pic.name}}</h4>
+                                <p>Description: {{pic.description}}</p>
+
+
+            </div>
+            <footer style="color:#112A19">
+                <input type="text" value="https://nimo-pic.herokuapp.com{{pic.image.url}}" id="{{pic.id}}-url">
+                <button onclick="copyLink()">Copy text</button>
+
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </footer>
+        </div>
+
+    </div>
+</div>
+{% endfor%}
+    </div>
+{% endblock %}
