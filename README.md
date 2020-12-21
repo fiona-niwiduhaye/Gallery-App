@@ -34,7 +34,7 @@ Follow the following commands to run the project
 
 ### Live link
 
-You can view the project through this link:
+You can view the project through this link:https://iwacugallery.herokuapp.com/
 
 ### Contact Information
 
