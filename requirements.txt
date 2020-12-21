@@ -8,6 +8,7 @@ gunicorn==20.0.4
 importlib-metadata==2.1.1
 Pillow==8.0.1
 psycopg2==2.8.6
+python-decouple==3.3
 pytz==2020.4
 soupsieve==2.1
 sqlparse==0.4.1
